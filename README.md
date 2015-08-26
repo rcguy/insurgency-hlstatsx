@@ -39,5 +39,3 @@ Creates hooks and events for Insurgency-specific stat logging, entities, and eve
  * "sm_insurgency_disable_sliding" "0" //
 
 ---
-
-[Insurgency Image Pack](http://stats.jballou.com/hlstatsimg/games/insurgency/images.zip): This is the latest bundle of weapon icons, includes award/ribbon images. Soon it will also include map images.
