@@ -37,6 +37,7 @@ Creates hooks and events for Insurgency-specific stat logging, entities, and eve
  * "sm_insurgency_infinite_ammo" "0" //Infinite ammo, still uses magazines and needs to reload
  * "sm_insurgency_infinite_magazine" "0" //Infinite magazine, will never need reloading.
  * "sm_insurgency_disable_sliding" "0" //
+
 ---
 
 [Insurgency Image Pack](http://stats.jballou.com/hlstatsimg/games/insurgency/images.zip): This is the latest bundle of weapon icons, includes award/ribbon images. Soon it will also include map images.
