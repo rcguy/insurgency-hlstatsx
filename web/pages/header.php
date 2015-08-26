@@ -332,6 +332,11 @@ For support and installation notes visit http://www.hlxcommunity.com
 ?>
 			<li><a href="<?php echo $g_options['scripturl'] . "?mode=bans&amp;game=$game"; ?>" class="fHeading"><img src="<?php echo $iconpath; ?>/nav-bans.png" alt="Banned" /></a> <a href="<?php echo $g_options['scripturl'] . "?mode=bans&amp;game=$game"; ?>" class="fHeading">Bans</a></li>
 <?php
+    } 
+    if ($g_options['nav_lastcon'] == 1) {
+?>
+            <li><a href="<?php echo $g_options['scripturl'] . "?mode=last&amp;game=$game"; ?>" class="fHeading"><img src="<?php echo $iconpath; ?>/nav-last.png" alt="Last" /></a> <a href="<?php echo $g_options['scripturl'] . "?mode=last&amp;game=$game"; ?>" class="fHeading">Last</a></li>
+<?php
 	} 
 ?>
 	</ul>

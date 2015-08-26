@@ -183,6 +183,7 @@ $valid_modes = array(
 	'admin',
 	'help',
 	'bans',
+	'last',
 	'servers',
 	'chathistory',
 	'ranks',
