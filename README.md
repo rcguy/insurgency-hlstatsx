@@ -5,7 +5,7 @@ Complete build of HLStatsX that includes Insurgency specific images, icons, map 
 ### HLstatsX CE Ingame Plugin (version 1.6.19)
 Provides ingame functionality for interaction from an HLstatsX CE installation
 
- * [Plugin - hlstatsx.smx](plugins/hlstatsx.smx?raw=true)
+ * [Plugin - hlstatsx.smx](https://github.com/jaredballou/insurgency-sourcemod/blob/master/plugins/hlstatsx.smx?raw=true)
  * [Source - hlstatsx.sp](https://raw.githubusercontent.com/jaredballou/insurgency-sourcemod/master/scripting/hlstatsx.sp)
 
 Adds in-game support for HLStatsX servers to connect and send messages and other tasks. Adds color support, and a number of other features absent from the HLStatsX upstream version. Release ready, no known bugs.
@@ -21,7 +21,7 @@ Adds in-game support for HLStatsX servers to connect and send messages and other
 ### Insurgency Support Library (version 1.1.0)
 Provides functions to support Insurgency and fixes logging
 
- * [Plugin - insurgency.smx](plugins/insurgency.smx?raw=true)
+ * [Plugin - insurgency.smx](https://github.com/jaredballou/insurgency-sourcemod/blob/master/plugins/insurgency.smx?raw=true)
  * [Source - insurgency.sp](https://raw.githubusercontent.com/jaredballou/insurgency-sourcemod/master/scripting/insurgency.sp)
 
 Creates hooks and events for Insurgency-specific stat logging, entities, and events. Fixes a lot of issues with missing log entries for HLStatsX, this plugin is tightly bound with my HLStatsX fork I created to handle more Insurgency-specific data and events. This is based off of Brutus' Insurgency logger, but adds support for nearly every event supported by the game, enhances support for new weapons by removing the old config file method of adding weapons, and generally kicks ass if you're looking to create stats from Insurgency. It also includes a number of natives for checking game rules and objective status. This is generally stable, I look at it as a beta release candidate right now.
@@ -37,16 +37,6 @@ Creates hooks and events for Insurgency-specific stat logging, entities, and eve
  * "sm_insurgency_infinite_ammo" "0" //Infinite ammo, still uses magazines and needs to reload
  * "sm_insurgency_infinite_magazine" "0" //Infinite magazine, will never need reloading.
  * "sm_insurgency_disable_sliding" "0" //
-
-#### Todo
- * [ ] Weapon lookup by index/name
- * [ ] Role (template/class) lookup by index/name/player
- * [ ] Game rules lookup (control points, status, waves, etc)
- * [ ] Precache models based upon manifests.
- * [ ] Investigate adding feature to read mp_theater_override variable, parse that theater, and add any materials/models/sounds to the list?
- * [ ] Complete theater parser in SM to get around engine theater lookup limitations?
-
-
 ---
 
 [Insurgency Image Pack](http://stats.jballou.com/hlstatsimg/games/insurgency/images.zip): This is the latest bundle of weapon icons, includes award/ribbon images. Soon it will also include map images.
