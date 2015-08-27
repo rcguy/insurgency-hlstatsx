@@ -375,6 +375,12 @@ sub insertPlayer
 	if ($::g_servers{$srv_addr}->{play_game} == L4D() && $self->{userid} < 0) {
 		$hideval = 1;
 	}
+	
+	# always hide bot rankings for Insurgency
+	if ($::g_servers{$srv_addr}->{play_game} == INSURGENCY() && $self->{is_bot} == 1) {
+		$hideval = 1;
+	}
+	
 	if ($playerid) {
 		my $query = "
 			INSERT INTO
