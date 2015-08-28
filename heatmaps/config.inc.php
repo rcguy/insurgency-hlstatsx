@@ -4,15 +4,15 @@ ini_set("memory_limit", "1024M");
 ini_set("max_execution_time", "0");
 
 define('DB_HOST',	'localhost');
-define('DB_USER',	'hlstatsx');
-define('DB_PASS',	'hlstatsx');
-define('DB_NAME',	'hlstatsx');
-define('HLXCE_WEB',	'/opt/hlstatsx-community-edition/web');
-define('HUD_URL',	'http://ins.jballou.com/hlstatsx');
+define('DB_USER',	'hlstats');
+define('DB_PASS',	'hlstats');
+define('DB_NAME',	'hlstats');
+define('HLXCE_WEB',	'/your/path/to/hlstats/web');
+define('HUD_URL',	'http://yoursite.com/hlstats');
 define('OUTPUT_SIZE',	'large');
 
 define('DB_PREFIX',	'hlstats');
-define('KILL_LIMIT',	10000);
+define('KILL_LIMIT',	50000);
 define('DEBUG', 1);
 
 // No need to change this unless you are on really low disk.
