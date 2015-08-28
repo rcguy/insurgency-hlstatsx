@@ -59,7 +59,7 @@ For support and installation notes visit http://www.hlxcommunity.com
 	}
 	else
 	{
-		$minmembers = 3;
+		$minmembers = 1;
 	}
 	pageHeader
 	(
