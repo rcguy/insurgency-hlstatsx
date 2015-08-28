@@ -343,7 +343,8 @@ class Heatmap {
 			imagedestroy($thumb);
 		}
 
-		//			$img = self::drawHud($img, $map,  "HLX:CE", "Total Kills", $num_kills, $firstdata);
+		// enable drawing of hud
+		$img = self::drawHud($img, $map,  "HLX:CE", "Total Kills: ", $num_kills, $firstdata);
 
 		if (imagepng($img, $path . "/" . $map . "-" . $mode . ".png", 9)) $return = true;
 		if (imagepng($overlay, CACHE_DIR . "/$code/${map}_${timestamp}.png", 9)) $return = true;
@@ -430,13 +431,13 @@ class Heatmap {
 //		$img = self::resize($img);
 
 		$hudText = array(
-				strtoupper($map) . " - " . strtoupper($heatmapname) . " HEATMAP - " . strtoupper($method),
+				strtoupper($map) . " - " . strtoupper($heatmapname) . " HEATMAP - " . strtoupper($method) . strtoupper($num_kills),
 				date("m/d/y", intval(time() - 60*60*24*30)) . " - " . date("m/d/y", time()),
 				"Generated: " . date("Y-m-d H:i:s"),
 				HUD_URL
 				);
 
-		show::Event("HUD", "Creating Overlay HUD", 2);
+		show::Event("HUD", "Creating Overlay HUD", 1);
 
 		$hudx = imagesx($img);
 		$hudy = intval(intval($mapinfo[$code][$map]['font'] + 4) * intval(count($hudText) + 1) + 8);
@@ -472,7 +473,7 @@ class Heatmap {
 
 		imagedestroy($hud);
 
-		show::Event("HUD", "Done...", 2);
+		show::Event("HUD", "Done...", 1);
 		return $img;
 	}
 
