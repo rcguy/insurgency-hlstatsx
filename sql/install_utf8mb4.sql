@@ -4280,7 +4280,7 @@ INSERT INTO `hlstats_Options` (`keyname`, `value`, `opttype`) VALUES
 ('google_map_type', 'MAP',2),
 ('slider', '1',2),
 ('modrewrite','0',2),
-('showqueries','0',2),
+('showqueries','1',2),
 ('Proxy_Key', SUBSTRING(MD5(RAND()) FROM 1 FOR 24), 1),
 ('Proxy_Daemons', '', 2),
 ('sourcebans_address', '', 2),
