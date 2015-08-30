@@ -509,7 +509,8 @@ sub DoAwards
 					av_latency
 				LIMIT 1    	
 			"); 	
-		} elsif ($code eq "mostkills") {
+		}
+		elsif ($code eq "mostkills") {
 			$resultDaily = &doQuery("
 				SELECT
 					hlstats_Players_History.playerId,
@@ -537,6 +538,37 @@ sub DoAwards
 					AND hlstats_Players.hideranking=0
 				ORDER BY
 					kills DESC
+				LIMIT 1
+			");
+		}
+		elsif ($code eq "mostdeaths") {
+			$resultDaily = &doQuery("
+				SELECT
+					hlstats_Players_History.playerId,
+					hlstats_Players_History.deaths
+				FROM
+					hlstats_Players_History,
+					hlstats_Players
+				WHERE
+					hlstats_Players_History.game='".&quoteSQL($game)."'
+					AND	hlstats_Players.playerId = hlstats_Players_History.playerId
+					AND hlstats_Players.hideranking=0
+					AND eventTime = DATE_SUB($date_base, INTERVAL $opt_numdays DAY)
+				ORDER BY
+					deaths DESC
+				LIMIT 1
+			");
+			$resultGlobal = &doQuery("
+				SELECT
+					playerId,
+					deaths
+				FROM
+					hlstats_Players
+				WHERE
+					hlstats_Players.game='".&quoteSQL($game)."'
+					AND hlstats_Players.hideranking=0
+				ORDER BY
+					deaths DESC
 				LIMIT 1
 			");
 		}
@@ -570,7 +602,8 @@ sub DoAwards
 					suicides DESC
 				LIMIT 1
 			");
-		} elsif ($code eq "teamkills") {
+		}
+		elsif ($code eq "teamkills") {
 			$resultDaily = &doQuery("
 				SELECT
 					hlstats_Players_History.playerId,
@@ -600,7 +633,8 @@ sub DoAwards
 					teamkills DESC
 				LIMIT 1
 			");
-		} elsif ($code eq "bonuspoints") {
+		}
+		elsif ($code eq "bonuspoints") {
 			$resultDaily = &doQuery("
 				SELECT
 					actions.playerId,
@@ -663,7 +697,8 @@ sub DoAwards
 					av_bonuspoints DESC
 				LIMIT 1       
 			");
-		} elsif ($code eq "allsentrykills") {
+		}
+		elsif ($code eq "allsentrykills") {
 			$resultDaily = &doQuery("
 				SELECT
 					hlstats_Events_Frags.killerId,
@@ -704,7 +739,8 @@ sub DoAwards
 					hlstats_Players.skill DESC
 				LIMIT 1
 			");
-		} elsif ($code eq "connectiontime") {
+		}
+		elsif ($code eq "connectiontime") {
 			$resultDaily = &doQuery("
 				SELECT
 					hlstats_Players_History.playerId,
@@ -734,7 +770,8 @@ sub DoAwards
 					connection_time DESC
 				LIMIT 1
 			");
-		} elsif ($code eq "killstreak") {
+		}
+		elsif ($code eq "killstreak") {
 			$resultDaily = &doQuery("
 				SELECT
 					hlstats_Players_History.playerId,
@@ -764,7 +801,8 @@ sub DoAwards
 					kill_streak DESC
 				LIMIT 1
 			");
-		} elsif ($code eq "deathstreak") {
+		}
+		elsif ($code eq "deathstreak") {
 		print "in deathstreak";
 			$resultDaily = &doQuery("
 				SELECT
@@ -795,7 +833,8 @@ sub DoAwards
 					death_streak DESC
 				LIMIT 1
 			");
-		} else {
+		}
+		else {
 			$resultDaily = &doQuery("
 				SELECT
 					$playerfield,
