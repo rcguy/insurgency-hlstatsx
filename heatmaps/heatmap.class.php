@@ -43,7 +43,6 @@ class Heatmap {
 	 */
 	public static function init () {
 		global $argv;
-		DB::connect();
 		self::mapinfo();
 		self::parseArguments($argv);
 	}
@@ -217,7 +216,7 @@ class Heatmap {
 		$num_kills = DB::numRows($result);
 
 		if (!$num_kills) {
-			show::Event("IGNORE", "Game: $code, Map: $map, Kills: $num_kills, (No kills in period)", 1);
+			show::Event("IGNORE", "Game: $code, Map: $map, Kills: $num_kills, (No kills in period)", 2);
 			return false;
 		}
 
@@ -344,7 +343,7 @@ class Heatmap {
 		}
 
 		// enable drawing of hud
-		$img = self::drawHud($img, $map,  "HLX:CE", "Total Kills: ", $num_kills, $firstdata);
+		$img = self::drawHud($img, $map,  "HLX:CE", "Total Kills", $firstdata);
 
 		if (imagepng($img, $path . "/" . $map . "-" . $mode . ".png", 9)) $return = true;
 		if (imagepng($overlay, CACHE_DIR . "/$code/${map}_${timestamp}.png", 9)) $return = true;
@@ -422,16 +421,16 @@ class Heatmap {
 		show::Event("SQL", $map_query, 3);
 	}
 
-	private static function drawHud ($img, $map, $heatmapname, $method, $num_kills, $firstdata) {
+	private static function drawHud ($img, $map, $heatmapname, $method, $firstdata) {
 		$mapinfo = Env::get('mapinfo');
 		$code = Env::get('code');
 
 
 		// Resize the image according to your  settings
-//		$img = self::resize($img);
+		//$img = self::resize($img);
 
 		$hudText = array(
-				strtoupper($map) . " - " . strtoupper($heatmapname) . " HEATMAP - " . strtoupper($method) . strtoupper($num_kills),
+				strtoupper($map) . " - " . strtoupper($heatmapname) . " HEATMAP - " . strtoupper($method),
 				date("m/d/y", intval(time() - 60*60*24*30)) . " - " . date("m/d/y", time()),
 				"Generated: " . date("Y-m-d H:i:s"),
 				HUD_URL
@@ -456,7 +455,6 @@ class Heatmap {
 		// Copy the hud to the top of the image.
 		imagecopy($img, $hud, 0, 0, 0, 0, $hudx, $hudy);
 
-		//array imagettftext  ( resource $image  , float $size  , float $angle  , int $x  , int $y  , int $color  , string $fontfile  , string $text  )
 		$i = 1;
 		foreach ($hudText as $text) {
 			imagettftext(	$img, 
@@ -600,22 +598,18 @@ class Heatmap {
 
 
 class DB {
-	public static function connect () {
-		mysql_connect(DB_HOST, DB_USER, DB_PASS);
-		mysql_select_db(DB_NAME);
-		show::Event("DB", "Connected to " . DB_NAME . " as " . DB_USER . "@" . DB_HOST, 1);
-	}
 
 	public static function doQuery ($query) {
-		return mysql_query($query);
+		$con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		return mysqli_query($con, $query);
 	}
 
 	public static function getAssoc ($result) {
-		return  mysql_fetch_assoc($result);
+		return  mysqli_fetch_assoc($result);
 	}
 
 	public static function numRows ($result) {
-		return mysql_num_rows($result);
+		return mysqli_num_rows($result);
 	}
 }
 
